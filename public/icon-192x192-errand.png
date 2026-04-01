@@ -1,0 +1,20 @@
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="192" height="192" fill="#0B2340"/>
+  <!-- Shopping Bag -->
+  <path d="M60 72C60 48 72 40 84 40H108C120 40 132 48 132 72L132 150C132 164 126 170 108 170H84C60 170 60 164 60 150V72Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2"/>
+  
+  <!-- Bag Handle -->
+  <path d="M84 40C84 30 90 20 96 20C102 20 108 30 108 40" stroke="#FFFFFF" stroke-width="3" fill="none" stroke-linecap="round"/>
+  
+  <!-- Star 1 -->
+  <path d="M130 48L134 62L149 62L137 71L141 85L130 76L119 85L123 71L111 62L126 62L130 48Z" fill="#FB8500"/>
+  
+  <!-- Star 2 -->
+  <path d="M150 96L152 108L165 108L153 115L155 127L144 120L133 127L135 115L123 108L136 108L138 96Z" fill="#FB8500"/>
+  
+  <!-- Star 3 -->
+  <path d="M138 140L140 152L153 152L141 159L143 171L132 164L121 171L123 159L111 152L124 152L126 140Z" fill="#FB8500"/>
+  
+  <!-- Swoosh -->
+  <path d="M20 100Q50 60 80 80" stroke="#FB8500" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>

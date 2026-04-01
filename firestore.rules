@@ -1,0 +1,117 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Helper to check if user is an administrator
+    function isAdmin() {
+      return isAuthenticated() && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // Users collection
+    match /users/{userId} {
+      allow read, create: if isAuthenticated();
+      allow update, delete: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+    }
+
+    // Products collection (Read for everyone, write for admin)
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Categories collection (Read for everyone, write for admin)
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Vendors collection (Read for everyone, write for admin)
+    match /vendors/{vendorId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // TimeSlots collection (Read for everyone, write for admin)
+    match /timeSlots/{slotId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Settings collection (Read for everyone, write for admin)
+    match /settings/{settingId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Orders collection (Read for owner/admin, write for auth)
+    match /orders/{orderId} {
+      allow read: if isAuthenticated() && (resource.data.customerId == request.auth.uid || resource.data.userId == request.auth.uid || isAdmin());
+      allow write: if isAuthenticated();
+    }
+
+    // Cart collection (Read/Write for owner)
+    match /cart/{cartId} {
+      allow read: if isAuthenticated() && (resource.data.userId == request.auth.uid);
+      allow create: if isAuthenticated() && (request.resource.data.userId == request.auth.uid);
+      allow update, delete: if isAuthenticated() && (resource.data.userId == request.auth.uid);
+    }
+
+    // Wishlists collection (Read/Write for owner)
+    match /wishlists/{wishlistId} {
+      allow read: if isAuthenticated() && (resource.data.userId == request.auth.uid);
+      allow create: if isAuthenticated() && (request.resource.data.userId == request.auth.uid);
+      allow update, delete: if isAuthenticated() && (resource.data.userId == request.auth.uid);
+    }
+
+    // Notifications collection (Read for owner/admin, write for auth)
+    match /notifications/{notificationId} {
+      allow read: if isAuthenticated() && (resource.data.customerId == request.auth.uid || resource.data.userId == request.auth.uid || isAdmin());
+      allow write: if isAuthenticated();
+    }
+
+    // Delivery Partners collection
+    match /deliveryPartners/{userId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() && request.auth.uid == userId;
+      allow update: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+      allow delete: if isAdmin();
+    }
+
+    // Deliveries collection
+    match /deliveries/{deliveryId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated();
+    }
+
+    // Earnings collection
+    match /earnings/{earningId} {
+      allow read: if isAuthenticated();
+      allow create: if isAdmin(); // System managed
+    }
+
+    // User Product Ratings (Read for everyone, write for owner)
+    match /userProductRatings/{ratingId} {
+      allow read: if true;
+      allow write: if isAuthenticated() && (request.resource.data.userId == request.auth.uid);
+    }
+
+    // Recommendations collection (Read/Write for owner)
+    match /recommendations/{recommendationId} {
+      allow read: if isAuthenticated() && (resource.data.userId == request.auth.uid);
+      allow write: if isAuthenticated() && (request.resource.data.userId == request.auth.uid);
+    }
+
+    // Universal catch-all (Deny all)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
