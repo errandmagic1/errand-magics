@@ -9,7 +9,7 @@ export default function LoginPage() {
       <div className="flex flex-col items-center pt-8">
         <div className="mb-4">
           <div className="flex justify-center mb-2 animate-in fade-in zoom-in duration-700">
-            <img src="/errand-magics-logo.png?v=1" alt="ErrandMagics Logo" className="h-32 w-auto object-contain" />
+            <img src="/errand-magics-logo.png?v=1" alt="ErrandMagics Logo" className="h-44 w-auto object-contain" />
           </div>
           <p className="text-xs font-medium text-muted-foreground text-center mt-2 px-8 leading-relaxed italic border-t border-gray-100 pt-4">
             Quick Commerce Platform - World-class delivery for groceries, vegetables, fruits, medicine, and food

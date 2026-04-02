@@ -310,12 +310,12 @@ export default function Home() {
         className="sticky top-0 z-[100] bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/70 border-b border-border/50"
         data-testid="navigation-header"
       >
-        <div className="flex items-center justify-between p-4">
+        <div className="flex items-center justify-between pl-2 pr-4 py-0">
           <div className="flex items-center space-x-3">
             <img 
               src="/errand-magics-logo.png?v=1" 
               alt="ErrandMagics Logo" 
-              className="h-16 w-auto object-contain transition-all hover:scale-105 duration-300"
+              className="h-28 w-auto object-contain -my-4 -ml-4 transition-all hover:scale-105 duration-300"
             />
             <div>
               {/* <h1 className="font-bold text-xl text-foreground">ErrandMagics</h1> */}
