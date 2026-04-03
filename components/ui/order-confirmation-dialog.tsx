@@ -169,7 +169,7 @@ export function OrderConfirmationDialog({
           {/* Thank You Message */}
           <div className="mt-6 p-4 bg-gradient-to-r from-green-100 to-emerald-100 rounded-lg">
             <p className="text-green-800 font-medium">
-              Thank you for choosing Bolpur Mart! �
+              Thank you for choosing Errand Magics! ?? �
             </p>
             <p className="text-green-600 text-sm mt-1">
               We'll keep you updated on your order status

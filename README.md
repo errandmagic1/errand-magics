@@ -1,7 +1,7 @@
-# 🛍️ Bolpur Mart - Quick Commerce PWA
+# 🛍️ Errand Magics - Quick Commerce PWA
 
 ## Overview
-Bolpur Mart is a modern Progressive Web App (PWA) for quick commerce, offering time-based ordering of groceries, vegetables, fruits, medicine, and food delivery in Bolpur. Built with Next.js 14, TypeScript, and Tailwind CSS, it provides a native app-like experience with offline capabilities.
+Errand Magics is a modern Progressive Web App (PWA) for quick commerce, offering time-based ordering of groceries, vegetables, fruits, medicine, and food delivery in Bolpur. Built with Next.js 14, TypeScript, and Tailwind CSS, it provides a native app-like experience with offline capabilities.
 
 ## ✨ Key Features
 
@@ -58,8 +58,8 @@ Bolpur Mart is a modern Progressive Web App (PWA) for quick commerce, offering t
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/bolpur-mart.git
-   cd bolpur-mart
+   git clone https://github.com/yourusername/errand-magics.git
+   cd errand-magics
    ```
 
 2. Install dependencies:

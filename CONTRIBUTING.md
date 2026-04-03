@@ -1,4 +1,4 @@
-# Contributing to Bolpur Mart
+# Contributing to Errand Magics
 
 👍 First off, thanks for taking the time to contribute! 🎉
 
@@ -93,7 +93,7 @@ pnpm test
 ```
 
 ## Additional Notes
-* If you can't find an open issue addressing the problem, [open a new one](https://github.com/yourusername/bolpur-mart/issues/new)
+* If you can't find an open issue addressing the problem, [open a new one](https://github.com/yourusername/errand-magics/issues/new)
 * If you find a closed issue that seems related to your issue, link to the closed issue in your issue
 
-Thank you for contributing to Bolpur Mart! 🙏
+Thank you for contributing to Errand Magics! ?? 🙏

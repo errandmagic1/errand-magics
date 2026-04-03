@@ -48,7 +48,7 @@ export default function Account() {
     if (isInstalled) {
       toast({
         title: "Already Installed",
-        description: "Bolpur Mart is already on your home screen!",
+        description: "Errand Magics is already on your home screen!",
       });
       return;
     }
@@ -70,7 +70,7 @@ export default function Account() {
           : '') +
         'Steps to install manually:\n' +
         '1. Look for the "Install" icon in your URL bar (right side).\n' +
-        '2. Or click the 3-dot menu (⋮) -> "Save and Share" -> "Install Bolpur Mart".\n\n' +
+        '2. Or click the 3-dot menu (⋮) -> "Save and Share" -> "Install Errand Magics".\n\n' +
         'Note: If it still doesn\'t show, ensure the Service Worker is registered (check console logs).'
       );
       return;
@@ -201,7 +201,7 @@ export default function Account() {
         toast({
           title: "Help & Support",
           description:
-            "Contact us at support@bolpurmart.com or call +91 98765 43210",
+            "Contact us at support@errandmagics.com or call +91 98765 43210",
         }),
       testId: "help-menu",
       disabled: false,

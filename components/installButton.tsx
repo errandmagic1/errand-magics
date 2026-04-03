@@ -125,7 +125,7 @@ export function InstallButton() {
             <Dialog open={showIOSModal} onOpenChange={setShowIOSModal}>
                 <DialogContent>
                     <DialogHeader>
-                        <DialogTitle>Install Bolpur Mart</DialogTitle>
+                        <DialogTitle>Install Errand Magics</DialogTitle>
                         <DialogDescription>
                             Install this application on your home screen for quick and easy access.
                         </DialogDescription>
