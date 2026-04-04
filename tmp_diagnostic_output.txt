@@ -1,0 +1,68 @@
+--- Time Rules ---
+{
+  "Q9R93U2qCs263uZQ19KZ": {
+    "allowedCategories": [
+      {
+        "name": "Clothes",
+        "id": "O6oheK1uErT2ArSqVjNX"
+      }
+    ],
+    "startTime": "18:00",
+    "timeSlotName": "evening",
+    "isActive": true,
+    "endTime": "22:00"
+  },
+  "sm43doabCp9k3Me1iCFu": {
+    "endTime": "06:00",
+    "isActive": true,
+    "startTime": "22:00",
+    "timeSlotName": "night",
+    "allowedCategories": [
+      {
+        "name": "Clothes",
+        "id": "O6oheK1uErT2ArSqVjNX"
+      }
+    ]
+  },
+  "1vJnSidSRpyeQ322zFGl": {
+    "allowedCategories": [
+      {
+        "name": "Clothes",
+        "id": "O6oheK1uErT2ArSqVjNX"
+      }
+    ],
+    "timeSlotName": "afternoon",
+    "startTime": "12:00",
+    "isActive": true,
+    "endTime": "18:00"
+  },
+  "QptrXCdERnh3AMncrVcd": {
+    "startTime": "06:00",
+    "timeSlotName": "morning",
+    "allowedCategories": [
+      {
+        "name": "Clothes",
+        "id": "O6oheK1uErT2ArSqVjNX"
+      }
+    ],
+    "endTime": "12:00",
+    "isActive": true
+  }
+}
+
+--- Products (Limit 5) ---
+- ID: 69s0wU0o9KFSEpIaklxi, Name: Men and boy
+  category: undefined
+  categories: [{"updatedAt":"2026-03-31T11:40:28.838Z","createdAt":"2026-03-31T11:40:28.837Z","name":"Clothes","id":"O6oheK1uErT2ArSqVjNX","description":"Mens wear, Child wear","isActive":true}]
+  categoryId: undefined
+  available: true, isActive: true
+- ID: wJRetAqHdj28Vtcp689J, Name: kids
+  category: undefined
+  categories: [{"description":"Mens wear, Child wear","updatedAt":"2026-03-31T11:40:28.838Z","createdAt":"2026-03-31T11:40:28.837Z","name":"Clothes","id":"O6oheK1uErT2ArSqVjNX","isActive":true}]
+  categoryId: undefined
+  available: true, isActive: true
+- ID: xzjM7q4scsi4RGSEetcB, Name: Girls
+  category: undefined
+  categories: [{"isActive":true,"description":"Mens wear, Child wear","createdAt":"2026-03-31T11:40:28.837Z","name":"Clothes","id":"O6oheK1uErT2ArSqVjNX","updatedAt":"2026-03-31T11:40:28.838Z"}]
+  categoryId: undefined
+  available: true, isActive: true

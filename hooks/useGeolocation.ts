@@ -58,7 +58,7 @@ export function useGeolocation() {
             if (types.includes("neighborhood") && !area) area = longName;
         });
 
-        city = subLocality || locality || district || area || "";
+        city = locality || subLocality || district || area || "";
         if (city) {
             city = city.replace(/ Municipality| Corporation| Panchayat| Block| Gram Panchayat/gi, '').trim();
         }
