@@ -293,46 +293,46 @@ export function ProductCard({ product, userId }: ProductCardProps) {
         )}
 
         {/* Price and Add to Cart Section */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mt-auto">
           {/* Price Display */}
-          <div className="flex flex-col">
-            <div className="flex items-center space-x-1">
+          <div className="flex flex-col min-w-0">
+            <div className="flex items-baseline space-x-1 flex-wrap">
               <span
-                className="font-bold text-primary text-sm"
+                className="font-bold text-primary text-base sm:text-lg tracking-tight"
                 data-testid={`product-price-${product.id}`}
               >
                 ${formatPrice(hasDiscount && discountedPrice ? discountedPrice : originalPrice)}
               </span>
               {hasDiscount && discountedPrice && (
-                <span className="text-xs text-muted-foreground line-through">
+                <span className="text-[10px] sm:text-xs text-muted-foreground line-through opacity-70">
                   ${formatPrice(originalPrice)}
                 </span>
               )}
             </div>
             {hasDiscount && discountedPrice && (
-              <span className="text-xs text-green-600 font-medium">
+              <span className="text-[10px] sm:text-xs text-green-600 font-semibold uppercase tracking-wider">
                 Save ${formatPrice(originalPrice - discountedPrice)}
               </span>
             )}
           </div>
 
           {/* Add to Cart Controls */}
-          <div className="flex items-center space-x-1">
+          <div className="flex items-center w-full sm:w-auto">
             {quantity > 0 ? (
-              <div className="flex items-center space-x-1 bg-muted rounded-lg p-1">
+              <div className="flex items-center bg-muted/50 border border-border/50 rounded-full p-0.5 shadow-sm w-full sm:w-auto justify-between sm:justify-start">
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="w-6 h-6 hover:bg-background"
+                  className="w-7 h-7 sm:w-8 sm:h-8 hover:bg-background rounded-full transition-all active:scale-90"
                   onClick={handleDecreaseQuantity}
                   data-testid={`decrease-quantity-${product.id}`}
                   disabled={product.stock === 0 || cartLoading}
                 >
-                  <Minus className="h-3 w-3" />
+                  <Minus className="h-3 w-3 sm:h-4 sm:w-4" />
                 </Button>
 
                 <span
-                  className="w-6 text-center font-semibold text-sm"
+                  className="px-2 sm:px-3 text-center font-bold text-sm min-w-[20px]"
                   data-testid={`product-quantity-${product.id}`}
                 >
                   {quantity}
@@ -341,35 +341,36 @@ export function ProductCard({ product, userId }: ProductCardProps) {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="w-6 h-6 hover:bg-background"
+                  className="w-7 h-7 sm:w-8 sm:h-8 hover:bg-background rounded-full transition-all active:scale-90"
                   onClick={handleIncreaseQuantity}
                   disabled={isAddingToCart || product.stock === 0 || quantity >= product.stock || cartLoading}
                   data-testid={`increase-quantity-${product.id}`}
                 >
-                  <Plus className="h-3 w-3" />
+                  <Plus className="h-3 w-3 sm:h-4 sm:w-4" />
                 </Button>
               </div>
             ) : (
               <Button
                 variant="default"
                 size="sm"
-                className="h-8 px-3 text-xs font-medium"
+                className="h-9 px-4 sm:px-6 rounded-full text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all active:scale-95 bg-primary text-primary-foreground w-full sm:w-auto overflow-hidden relative group"
                 onClick={handleAddToCart}
                 disabled={isAddingToCart || product.stock === 0 || cartLoading}
                 data-testid={`add-to-cart-${product.id}`}
               >
+                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                 {isAddingToCart ? (
-                  <div className="flex items-center space-x-1">
-                    <div className="w-3 h-3 border border-white border-t-transparent rounded-full animate-spin"></div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-3 h-3 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                     <span>Adding...</span>
                   </div>
                 ) : product.stock === 0 ? (
                   'Out of Stock'
                 ) : (
-                  <>
-                    <Plus className="h-3 w-3 mr-1" />
-                    Add
-                  </>
+                  <div className="flex items-center justify-center">
+                    <Plus className="h-3.5 w-3.5 mr-1.5" />
+                    <span className="uppercase tracking-tight">Add</span>
+                  </div>
                 )}
               </Button>
             )}
