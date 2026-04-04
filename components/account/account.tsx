@@ -324,7 +324,7 @@ export default function Account() {
             </Card>
             <Card>
               <CardContent className="p-4 text-center">
-                <div className="text-2xl font-bold text-primary">₹0</div>
+                <div className="text-2xl font-bold text-primary">$0</div>
                 <div className="text-xs text-muted-foreground">Saved</div>
               </CardContent>
             </Card>

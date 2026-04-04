@@ -80,7 +80,6 @@ const languageOptions = [
 
 // Currency options
 const currencyOptions = [
-  { value: 'INR', label: 'Indian Rupee (₹)', symbol: '₹' },
   { value: 'USD', label: 'US Dollar ($)', symbol: '$' },
   { value: 'EUR', label: 'Euro (€)', symbol: '€' },
   { value: 'GBP', label: 'British Pound (£)', symbol: '£' }
@@ -102,7 +101,7 @@ export default function ProfileInformation() {
     notifications: true,
     theme: 'light',
     language: 'en',
-    currency: 'INR'
+    currency: 'USD'
   });
 
   // Initialize form data from user
@@ -115,7 +114,7 @@ export default function ProfileInformation() {
         notifications: user.customData?.preferences?.notifications ?? true,
         theme: user.customData?.preferences?.theme || 'light',
         language: user.customData?.preferences?.language || 'en',
-        currency: user.customData?.preferences?.currency || 'INR'
+        currency: user.customData?.preferences?.currency || 'USD'
       });
     }
   }, [user]);
@@ -249,7 +248,7 @@ export default function ProfileInformation() {
         notifications: user.customData?.preferences?.notifications ?? true,
         theme: user.customData?.preferences?.theme || 'light',
         language: user.customData?.preferences?.language || 'en',
-        currency: user.customData?.preferences?.currency || 'INR'
+        currency: user.customData?.preferences?.currency || 'USD'
       });
     }
     setIsEditing(false);
@@ -307,7 +306,7 @@ export default function ProfileInformation() {
   };
 
   const getCurrencyLabel = (code: string) => {
-    return currencyOptions.find(curr => curr.value === code)?.label || 'Indian Rupee (₹)';
+    return currencyOptions.find(curr => curr.value === code)?.label || 'US Dollar ($)';
   };
 
   if (!user) {

@@ -293,7 +293,7 @@ export function OrderTrackingModal({
 
   const formatTime = (date?: Date) => {
     if (!date) return null;
-    return new Date(date).toLocaleTimeString("en-IN", {
+    return new Date(date).toLocaleTimeString("en-US", {
       hour: "2-digit",
       minute: "2-digit",
       hour12: true,
@@ -302,21 +302,21 @@ export function OrderTrackingModal({
 
   const formatDate = (date?: Date) => {
     if (!date) return null;
-    return new Date(date).toLocaleDateString("en-IN", {
+    return new Date(date).toLocaleDateString("en-US", {
       day: "numeric",
       month: "short",
     });
   };
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("en-IN", {
+    return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "INR",
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
+      currency: "USD",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
     })
       .format(amount)
-      .replace("₹", "");
+      .replace("$", "");
   };
 
   const handleRefresh = async () => {
@@ -672,11 +672,11 @@ export function OrderTrackingModal({
                       {item.productName}
                     </p>
                     <p className="text-xs text-muted-foreground">
-                      Qty: {item.quantity} × ₹{formatCurrency(item.price)}
+                      Qty: {item.quantity} × ${formatCurrency(item.price)}
                     </p>
                   </div>
                   <span className="text-sm font-medium">
-                    ₹{formatCurrency(item.total)}
+                    ${formatCurrency(item.total)}
                   </span>
                 </div>
               ))}
@@ -691,29 +691,29 @@ export function OrderTrackingModal({
             <div className="border-t pt-3 space-y-2">
               <div className="flex justify-between text-sm">
                 <span>Subtotal</span>
-                <span>₹{formatCurrency(order.subtotal)}</span>
+                <span>${formatCurrency(order.subtotal)}</span>
               </div>
               {order.deliveryFee > 0 && (
                 <div className="flex justify-between text-sm">
                   <span>Delivery Fee</span>
-                  <span>₹{formatCurrency(order.deliveryFee)}</span>
+                  <span>${formatCurrency(order.deliveryFee)}</span>
                 </div>
               )}
               {order.taxes > 0 && (
                 <div className="flex justify-between text-sm">
                   <span>Taxes & Charges</span>
-                  <span>₹{formatCurrency(order.taxes)}</span>
+                  <span>${formatCurrency(order.taxes)}</span>
                 </div>
               )}
               {order.discount > 0 && (
                 <div className="flex justify-between text-sm text-success">
                   <span>Discount</span>
-                  <span>-₹{formatCurrency(order.discount)}</span>
+                  <span>-${formatCurrency(order.discount)}</span>
                 </div>
               )}
               <div className="flex justify-between font-semibold text-base border-t pt-2">
                 <span>Total Amount</span>
-                <span>₹{formatCurrency(order.total)}</span>
+                <span>${formatCurrency(order.total)}</span>
               </div>
             </div>
           </div>

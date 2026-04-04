@@ -154,12 +154,12 @@ export function ProductCard({ product, userId }: ProductCardProps) {
 
   // Format price display
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('en-IN', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: 'INR',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(price).replace('₹', '');
+      currency: 'USD',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(price).replace('$', '');
   };
 
   return (
@@ -301,17 +301,17 @@ export function ProductCard({ product, userId }: ProductCardProps) {
                 className="font-bold text-primary text-sm"
                 data-testid={`product-price-${product.id}`}
               >
-                ₹{formatPrice(hasDiscount && discountedPrice ? discountedPrice : originalPrice)}
+                ${formatPrice(hasDiscount && discountedPrice ? discountedPrice : originalPrice)}
               </span>
               {hasDiscount && discountedPrice && (
                 <span className="text-xs text-muted-foreground line-through">
-                  ₹{formatPrice(originalPrice)}
+                  ${formatPrice(originalPrice)}
                 </span>
               )}
             </div>
             {hasDiscount && discountedPrice && (
               <span className="text-xs text-green-600 font-medium">
-                Save ₹{formatPrice(originalPrice - discountedPrice)}
+                Save ${formatPrice(originalPrice - discountedPrice)}
               </span>
             )}
           </div>

@@ -85,7 +85,7 @@ export function FloatingCart({ userId, onOpenCart }: FloatingCartProps) {
         </div>
         <div className="text-right">
           <div className="font-bold" data-testid="cart-total">
-            ₹{cartSummary.total.toFixed(0)}
+            ${cartSummary.total.toFixed(2)}
           </div>
           <div className="text-xs opacity-80">Plus taxes</div>
         </div>

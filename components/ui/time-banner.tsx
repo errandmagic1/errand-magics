@@ -114,7 +114,7 @@ export function TimeBanner() {
 
               {/* Bottom Row - Free Delivery */}
               <div className="flex items-center space-x-1 bg-white/30 text-white border-white/30 hover:bg-white/40 px-2 py-1 rounded-full w-fit">
-                <span className="text-xs">Free delivery above ₹299</span>
+                <span className="text-xs">Free delivery above $20</span>
               </div>
             </div>
           </div>

@@ -40,7 +40,7 @@ export class FirebaseNotificationService {
           ? "Payment Verified! "
           : "Payment Verification Failed ",
         message: isVerified
-          ? `Your payment for order ${orderNumber} has been verified successfully. Total: ₹${total}`
+          ? `Your payment for order ${orderNumber} has been verified successfully. Total: $${total}`
           : `Your payment for order ${orderNumber} could not be verified. ${rejectionReason
             ? `Reason: ${rejectionReason}`
             : "Please contact support for assistance."
@@ -98,7 +98,7 @@ export class FirebaseNotificationService {
             ? "Payment Verified! "
             : "Payment Verification Failed ",
           message: isVerified
-            ? `Your payment for order ${notificationData.orderNumber} has been verified successfully. Total: ₹${notificationData.total}`
+            ? `Your payment for order ${notificationData.orderNumber} has been verified successfully. Total: $${notificationData.total}`
             : `Your payment for order ${notificationData.orderNumber
             } could not be verified. ${notificationData.rejectionReason
               ? `Reason: ${notificationData.rejectionReason}`

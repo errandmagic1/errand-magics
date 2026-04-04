@@ -58,7 +58,7 @@ export class FirebaseAuthService {
             notifications: true,
             theme: 'light',
             language: 'en',
-            currency: 'INR'
+            currency: 'USD'
           }
         }
         
@@ -119,7 +119,7 @@ export class FirebaseAuthService {
             notifications: true,
             theme: 'light',
             language: 'en',
-            currency: 'INR'
+            currency: 'USD'
           }
         }
         await setDoc(userDocRef, {
@@ -178,7 +178,7 @@ export class FirebaseAuthService {
           notifications: true,
           theme: 'light',
           language: 'en',
-          currency: 'INR'
+          currency: 'USD'
         }
       }
 
@@ -243,7 +243,7 @@ export class FirebaseAuthService {
             notifications: true,
             theme: 'light',
             language: 'en',
-            currency: 'INR'
+            currency: 'USD'
           }
         }
 

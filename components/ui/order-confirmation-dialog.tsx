@@ -51,11 +51,11 @@ export function OrderConfirmationDialog({
   };
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('en-IN', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: 'INR',
-      minimumFractionDigits: 0,
-    }).format(price).replace('₹', '');
+      currency: 'USD',
+      minimumFractionDigits: 2,
+    }).format(price).replace('$', '');
   };
 
   if (!order) return null;
@@ -106,7 +106,7 @@ export function OrderConfirmationDialog({
               <div className="flex justify-between items-center">
                 <span className="text-gray-600">Total Amount</span>
                 <span className="font-bold text-lg text-green-800">
-                  ₹{formatPrice(order.total)}
+                  ${formatPrice(order.total)}
                 </span>
               </div>
               
@@ -135,7 +135,7 @@ export function OrderConfirmationDialog({
             <div className="flex items-center justify-center space-x-2 text-blue-800">
               <Clock className="w-4 h-4" />
               <span className="text-sm font-medium">
-                Estimated Delivery: {order.estimatedDeliveryTime.toLocaleString('en-IN', {
+                Estimated Delivery: {order.estimatedDeliveryTime.toLocaleString('en-US', {
                   weekday: 'short',
                   day: 'numeric',
                   month: 'short',

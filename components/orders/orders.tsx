@@ -327,7 +327,7 @@ export default function Orders() {
 
   /** Date Formatter */
   const formatDate = (date: Date) => {
-    return date.toLocaleDateString("en-IN", {
+    return date.toLocaleDateString("en-US", {
       day: "numeric",
       month: "short",
       hour: "2-digit",
@@ -337,14 +337,14 @@ export default function Orders() {
 
   /** Format Currency */
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("en-IN", {
+    return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "INR",
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
+      currency: "USD",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
     })
       .format(amount)
-      .replace("₹", "");
+      .replace("$", "");
   };
 
   // Loading Skeleton Component
@@ -559,7 +559,7 @@ export default function Orders() {
                                 {item.productName}
                               </p>
                               <p className="text-xs text-muted-foreground">
-                                Qty: {item.quantity} × ₹
+                                Qty: {item.quantity} × $
                                 {formatCurrency(item.price)}
                               </p>
 
@@ -615,7 +615,7 @@ export default function Orders() {
                               )}
                             </div>
                             <span className="text-sm font-medium">
-                              ₹{formatCurrency(item.total)}
+                              ${formatCurrency(item.total)}
                             </span>
                           </div>
                         );
@@ -627,7 +627,7 @@ export default function Orders() {
                           Total Amount:
                         </span>
                         <span className="text-sm font-bold">
-                          ₹{formatCurrency(order.total)}
+                          ${formatCurrency(order.total)}
                         </span>
                       </div>
                     </div>

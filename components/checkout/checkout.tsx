@@ -878,7 +878,7 @@ export default function Checkout() {
                       </div>
                       {slot.fee > 0 ? (
                         <span className="text-sm font-medium text-primary">
-                          +₹{slot.fee}
+                          +${slot.fee}
                         </span>
                       ) : (
                         <Badge
@@ -1114,7 +1114,7 @@ export default function Checkout() {
                         </div>
                         <div className="text-center">
                           <Badge className="bg-green-500 text-white">
-                            Amount: ₹{cartSummary.total.toFixed(0)}
+                            Amount: ${cartSummary.total.toFixed(2)}
                           </Badge>
                         </div>
                       </div>
@@ -1265,13 +1265,13 @@ export default function Checkout() {
                       </span>
                       <span className="text-xs text-muted-foreground">×</span>
                       <span className="text-xs font-medium">
-                        ₹{item.product?.discountedPrice || item.product?.price}
+                        ${item.product?.discountedPrice || item.product?.price}
                       </span>
                     </div>
                   </div>
                   <div className="text-right">
                     <span className="font-medium">
-                      ₹
+                      $
                       {(
                         (item.product?.discountedPrice ||
                           item.product?.price ||
@@ -1280,7 +1280,7 @@ export default function Checkout() {
                     </span>
                     {item.product?.hasDiscount && (
                       <p className="text-xs text-muted-foreground line-through">
-                        ₹{(item.product.price * item.quantity).toFixed(0)}
+                        ${(item.product.price * item.quantity).toFixed(2)}
                       </p>
                     )}
                   </div>
@@ -1292,13 +1292,13 @@ export default function Checkout() {
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
                   <span>Subtotal ({cartSummary.itemCount} items)</span>
-                  <span>₹{cartSummary.subtotal.toFixed(0)}</span>
+                  <span>${cartSummary.subtotal.toFixed(2)}</span>
                 </div>
 
                 {cartSummary.discount > 0 && (
                   <div className="flex justify-between text-green-600">
                     <span>Item Discount</span>
-                    <span>-₹{cartSummary.discount.toFixed(0)}</span>
+                    <span>-${cartSummary.discount.toFixed(2)}</span>
                   </div>
                 )}
 
@@ -1311,14 +1311,14 @@ export default function Checkout() {
                   >
                     {cartSummary.deliveryFee === 0
                       ? "FREE"
-                      : `₹${cartSummary.deliveryFee}`}
+                      : `$${cartSummary.deliveryFee}`}
                   </span>
                 </div>
 
                 {cartSummary.taxes > 0 && (
                   <div className="flex justify-between">
                     <span>Taxes & Charges</span>
-                    <span>₹{cartSummary.taxes.toFixed(0)}</span>
+                    <span>${cartSummary.taxes.toFixed(2)}</span>
                   </div>
                 )}
 
@@ -1327,7 +1327,7 @@ export default function Checkout() {
                 <div className="flex justify-between font-bold text-lg">
                   <span>Total Amount</span>
                   <span className="text-primary">
-                    ₹{cartSummary.total.toFixed(0)}
+                    ${cartSummary.total.toFixed(2)}
                   </span>
                 </div>
               </div>
@@ -1342,7 +1342,7 @@ export default function Checkout() {
           <div>
             <p className="text-sm text-muted-foreground">Total Amount</p>
             <p className="text-xl font-bold text-primary">
-              ₹{cartSummary.total.toFixed(0)}
+              ${cartSummary.total.toFixed(2)}
             </p>
           </div>
           <div className="text-right text-sm text-muted-foreground">

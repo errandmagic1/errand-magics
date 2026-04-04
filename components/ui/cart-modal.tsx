@@ -209,12 +209,12 @@ export function CartModal({
                           className="font-semibold text-primary"
                           data-testid={`cart-item-price-${item.id}`}
                         >
-                          ₹{currentPrice}
+                          ${currentPrice}
                         </p>
                         {hasDiscount && (
                           <>
                             <span className="text-xs text-muted-foreground line-through">
-                              ₹{originalPrice}
+                              ${originalPrice}
                             </span>
                             <span className="text-xs text-green-600 font-medium">
                               {product?.discountPercentage}% OFF
@@ -280,7 +280,7 @@ export function CartModal({
                 <div className="flex justify-between">
                   <span>Item Total (MRP)</span>
                   <span data-testid="bill-original-total">
-                    ₹{cartSummary.originalTotal.toFixed(0)}
+                    ${cartSummary.originalTotal.toFixed(2)}
                   </span>
                 </div>
                 
@@ -291,13 +291,13 @@ export function CartModal({
                         Product Discount ({cartSummary.discountPercentage}% OFF)
                       </span>
                       <span data-testid="bill-discount">
-                        -₹{cartSummary.totalDiscount.toFixed(0)}
+                        -${cartSummary.totalDiscount.toFixed(2)}
                       </span>
                     </div>
                     <div className="flex justify-between text-green-600 font-medium">
                       <span>Total Savings</span>
                       <span data-testid="bill-total-savings">
-                        ₹{cartSummary.totalDiscount.toFixed(0)}
+                        ${cartSummary.totalDiscount.toFixed(2)}
                       </span>
                     </div>
                   </>
@@ -307,13 +307,13 @@ export function CartModal({
                 <div className="flex justify-between font-bold text-lg">
                   <span>Total Amount</span>
                   <span data-testid="bill-total">
-                    ₹{cartSummary.finalTotal.toFixed(0)}
+                    ${cartSummary.finalTotal.toFixed(2)}
                   </span>
                 </div>
                 
                 {cartSummary.totalDiscount > 0 && (
                   <div className="text-center text-green-600 text-sm font-medium">
-                    🎉 You saved ₹{cartSummary.totalDiscount.toFixed(0)} on this order!
+                    🎉 You saved ${cartSummary.totalDiscount.toFixed(2)} on this order!
                   </div>
                 )}
               </div>

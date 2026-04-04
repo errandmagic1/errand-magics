@@ -112,7 +112,7 @@ const cartSummary = {
     return sum + (price ?? 0) * item.quantity;
   }, 0),
   get deliveryFee() {
-    return this.subtotal >= 299 ? 0 : 30; // Free delivery above ₹299
+    return this.subtotal >= 20 ? 0 : 2; // Free delivery above $20
   },
   get taxes() {
     return Math.round(this.subtotal * 0.05); // 5% tax
