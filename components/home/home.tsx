@@ -312,9 +312,9 @@ export default function Home() {
       >
         <div className="flex items-center justify-between pl-2 pr-4 py-0">
           <div className="flex items-center space-x-3">
-            <img 
-              src="/errand-magics-logo.png?v=1" 
-              alt="ErrandMagics Logo" 
+            <img
+              src="/errand-magics-logo.png?v=1"
+              alt="ErrandMagics Logo"
               className="h-28 w-auto object-contain -my-4 -ml-4 transition-all hover:scale-105 duration-300"
             />
             <div>
@@ -556,20 +556,20 @@ export default function Home() {
 
       {/* Featured Banner */}
       <div className="px-4 mb-6">
-        <Card className="relative rounded-2xl overflow-hidden h-48 bg-gradient-to-r from-orange-400 to-red-500">
+        <Card className="group relative rounded-2xl overflow-hidden h-52 shadow-xl border-0">
           <img
-            src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
-            alt="Special Biryani Offer"
-            className="w-full h-full object-cover"
+            src="/icons/bannerimg.jpg"
+            alt="Promotion Banner"
+            className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/40"></div>
-          <CardContent className="absolute bottom-4 left-4 right-4 text-white p-0">
-            <h3 className="font-bold text-xl mb-1">Today's Special</h3>
-            <p className="text-sm opacity-90 mb-2">
-              Authentic Kolkata Biryani - 40% Off
+          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+          <CardContent className="absolute bottom-4 left-6 right-4 text-white p-0">
+            <h3 className="font-bold text-2xl mb-1 drop-shadow-md">Essentials & More</h3>
+            <p className="text-sm opacity-90 mb-4 drop-shadow-sm font-medium">
+              Daily needs delivered in minutes
             </p>
             <Button
-              className="px-4 py-2 bg-white text-black hover:bg-gray-100"
+              className="px-6 py-2 bg-white text-black hover:bg-gray-100 rounded-full font-bold shadow-lg transition-transform hover:scale-105 active:scale-95"
               data-testid="special-offer-button"
             >
               Order Now
