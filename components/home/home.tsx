@@ -401,7 +401,7 @@ export default function Home() {
           />
           <Input
             type="text"
-            placeholder="Search for biryani, snacks, medicines..."
+            placeholder="Search for groceries, snacks, essentials..."
             className="pl-10 pr-12 py-3 bg-card border border-border rounded-xl focus:ring-2 focus:ring-ring"
             value={searchQuery}
             onChange={handleSearch}

@@ -24,7 +24,7 @@ export function TimeBanner() {
         return {
           label: "Good Afternoon!",
           time: "12:00 PM - 5:00 PM",
-          description: "Perfect time for lunch essentials and household needs",
+          description: "Perfect time for essentials and household needs",
         };
       case "evening":
         return {
