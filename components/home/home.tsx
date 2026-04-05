@@ -10,6 +10,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem as ShadcnCarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 import { TimeBanner } from "@/components/ui/time-banner";
 import { ProductCard } from "@/components/ui/product-card";
 // import { AIRecommendations } from "@/components/ai-recommendations";
@@ -303,6 +311,7 @@ export default function Home() {
     initCart(actualUserId);
   }, [user, isAuthenticated, initCart]);
 
+
   return (
     <div className="mobile-container border">
       {/* Navigation Header */}
@@ -486,16 +495,41 @@ export default function Home() {
                   return (
                     <div
                       key={category.id}
-                      className={`px-3 py-2 cursor-pointer transition-colors ${isSelected
-                        ? "bg-blue-50 border-l-3 border-blue-500"
+                      className={`px-3 py-3 cursor-pointer transition-colors border-b border-gray-50 flex items-center gap-3 ${isSelected
+                        ? "bg-blue-50 border-l-4 border-blue-500"
                         : "hover:bg-gray-50"
                         }`}
                       onClick={() => handleCategorySelect(category.id)}
                     >
-                      <h4 className="text-xs font-medium text-gray-900">
-                        {category.name}
-                      </h4>
-                      <span className="text-[0.60rem] text-green-600">Available</span>
+                      <div className="w-10 h-10 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0 border border-gray-100">
+                        {category.imageUrl ? (
+                          <img 
+                            src={category.imageUrl} 
+                            alt={category.name}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <Grid3X3 className="w-4 h-4 text-gray-300" />
+                          </div>
+                        )}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-xs font-bold text-gray-900 truncate">
+                          {category.name}
+                        </h4>
+                        {category.description && (
+                          <p className="text-[0.60rem] text-gray-500 truncate line-clamp-1">
+                            {category.description}
+                          </p>
+                        )}
+                        <span className="text-[0.55rem] text-green-600 font-medium tracking-tight">Available now</span>
+                      </div>
+                      {isSelected && (
+                        <div className="w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+                          <Check className="w-2 h-2 text-white" />
+                        </div>
+                      )}
                     </div>
                   );
                 })}
@@ -554,29 +588,70 @@ export default function Home() {
         />
       )}
 
-      {/* Featured Banner */}
-      <div className="px-4 mb-6">
-        <Card className="group relative rounded-2xl overflow-hidden h-52 shadow-xl border-0">
-          <img
-            src="/icons/bannerimg.jpg"
-            alt="Promotion Banner"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-          <CardContent className="absolute bottom-4 left-6 right-4 text-white p-0">
-            <h3 className="font-bold text-2xl mb-1 drop-shadow-md">Essentials & More</h3>
-            <p className="text-sm opacity-90 mb-4 drop-shadow-sm font-medium">
-              Daily needs delivered in minutes
-            </p>
-            <Button
-              className="px-6 py-2 bg-white text-black hover:bg-gray-100 rounded-full font-bold shadow-lg transition-transform hover:scale-105 active:scale-95"
-              data-testid="special-offer-button"
-            >
-              Order Now
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
+      {/* Featured Carousel Categories */}
+      {availableCategories.length > 0 && (
+        <div className="px-4 mb-6">
+          <Carousel
+            plugins={[
+              Autoplay({
+                delay: 4000,
+              }),
+            ]}
+            className="w-full relative group"
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+          >
+            <CarouselContent>
+              {availableCategories.map((category) => (
+                <ShadcnCarouselItem key={category.id}>
+                  <Card 
+                    className={`group/card relative rounded-2xl overflow-hidden h-52 shadow-xl cursor-pointer transition-all ${selectedCategory === category.id ? "border-2 border-primary" : "border-0"}`}
+                    onClick={() => handleCategorySelect(category.id)}
+                  >
+                    {category.imageUrl ? (
+                      <img
+                        src={category.imageUrl}
+                        alt={category.name}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-105"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 w-full h-full bg-muted flex flex-col items-center justify-center">
+                         <Grid3X3 className="w-12 h-12 text-muted-foreground/40 mb-2" />
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity"></div>
+                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white text-left">
+                      <h3 className="font-bold text-2xl mb-1 truncate drop-shadow-md">{category.name}</h3>
+                      {category.description && (
+                         <p className="text-sm text-white/90 line-clamp-1 drop-shadow-md">{category.description}</p>
+                      )}
+                    </div>
+                    {selectedCategory === category.id && (
+                       <div className="absolute top-4 right-4 bg-primary text-primary-foreground p-1.5 rounded-full shadow-lg">
+                          <Check className="w-5 h-5" />
+                       </div>
+                    )}
+                  </Card>
+                </ShadcnCarouselItem>
+              ))}
+            </CarouselContent>
+            
+            <div className="hidden sm:block">
+              <CarouselPrevious className="left-2 opacity-0 group-hover:opacity-100 transition-opacity bg-white/20 hover:bg-white/40 border-0 text-white" />
+              <CarouselNext className="right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-white/20 hover:bg-white/40 border-0 text-white" />
+            </div>
+
+            <div className="flex sm:hidden absolute bottom-4 right-4 gap-1.5 opacity-80 z-10">
+              <CarouselPrevious className="static h-7 w-7 bg-black/30 hover:bg-black/50 border-0 text-white translate-x-0 translate-y-0" />
+              <CarouselNext className="static h-7 w-7 bg-black/30 hover:bg-black/50 border-0 text-white translate-x-0 translate-y-0" />
+            </div>
+          </Carousel>
+        </div>
+      )}
+
+
 
       {/* Products Grid */}
       <div className="px-4 mb-20">

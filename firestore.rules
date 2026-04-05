@@ -11,7 +11,8 @@ service cloud.firestore {
     function isAdmin() {
       return isAuthenticated() && 
         exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
-        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'subadmin');
     }
 
     // Users collection
@@ -107,6 +108,12 @@ service cloud.firestore {
     match /recommendations/{recommendationId} {
       allow read: if isAuthenticated() && (resource.data.userId == request.auth.uid);
       allow write: if isAuthenticated() && (request.resource.data.userId == request.auth.uid);
+    }
+
+    // Carousel collection (Read for everyone, write for admin)
+    match /carousel/{itemId} {
+      allow read: if true;
+      allow write: if isAdmin();
     }
 
     // Universal catch-all (Deny all)

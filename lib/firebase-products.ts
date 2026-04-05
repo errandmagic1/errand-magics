@@ -254,24 +254,43 @@ export class FirebaseProductService {
   static async getAvailableCategories(): Promise<CategoryReference[]> {
     try {
       const timeRules = await this.getTimeRules();
-      if (!timeRules) {
-        return [];
-      }
+      if (!timeRules || !db) return [];
 
       const currentSlotId = this.getCurrentTimeSlotId(timeRules);
-      if (!currentSlotId) {
-        // console.log(" No active time slot");
-        return [];
-      }
+      if (!currentSlotId) return [];
 
-      const allowedCategories = this.getAllowedCategories(
-        timeRules,
-        currentSlotId
-      );
+      const allowedCategoriesRefs = this.getAllowedCategories(timeRules, currentSlotId);
+      const allowedIds = allowedCategoriesRefs.map(ref => ref.id);
 
-      return allowedCategories;
+      if (allowedIds.length === 0) return [];
+
+      // Fetch ALL categories and filter them to ensure we get the latest data (images, etc)
+      // This is better than N single doc fetches
+      const categoriesQuery = query(collection(db, "categories"), where("isActive", "==", true));
+      const categoriesSnapshot = await getDocsFromServer(categoriesQuery);
+      
+      const allActiveCategories: any[] = [];
+      categoriesSnapshot.forEach(doc => {
+        allActiveCategories.push({ id: doc.id, ...doc.data() });
+      });
+
+      // Map allowed IDs to their full category data
+      return allowedIds.map(id => {
+        const fullCategory = allActiveCategories.find(c => c.id === id);
+        if (fullCategory) {
+          return {
+            id: fullCategory.id,
+            name: fullCategory.name,
+            imageUrl: fullCategory.imageUrl,
+            description: fullCategory.description
+          } as CategoryReference;
+        }
+        // Fallback to the reference from timeRules if not found in active categories
+        return allowedCategoriesRefs.find(ref => ref.id === id)!;
+      });
+
     } catch (error) {
-      console.error(" Error fetching available categories:", error);
+      console.error("Error fetching available categories:", error);
       return [];
     }
   }
