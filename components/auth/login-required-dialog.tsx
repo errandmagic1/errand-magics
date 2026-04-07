@@ -60,7 +60,7 @@ export function LoginRequiredDialog({ open, onOpenChangeAction }: LoginRequiredD
                 </div>
                 <DialogFooter className="sm:justify-center">
                     <p className="text-xs text-muted-foreground text-center">
-                        Join thousands of happy shoppers in Bolpur!
+                        Join thousands of happy shoppers in Errand Magics!
                     </p>
                 </DialogFooter>
             </DialogContent>

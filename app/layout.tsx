@@ -9,10 +9,45 @@ import { Suspense } from "react"
 import { AuthInitializer } from "@/components/auth/auth-initializer"
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://errand-magics-two.vercel.app"),
   title: "ErrandMagics - Quick Commerce Platform",
   description:
     "Quick Commerce Platform - Fast and reliable delivery for groceries, vegetables, fruits, medicine, and food",
   generator: "v0.app",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "ErrandMagics",
+  },
+  formatDetection: {
+    telephone: false,
+  },
+  openGraph: {
+    title: "ErrandMagics - Quick Commerce Platform",
+    description: "Quick Commerce Platform - Fast and reliable delivery for groceries, vegetables, fruits, medicine, and food",
+    url: "https://errand-magics-two.vercel.app",
+    siteName: "ErrandMagics",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1024,
+        height: 1024,
+        alt: "ErrandMagics Logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ErrandMagics - Quick Commerce Platform",
+    description: "Quick Commerce Platform - Fast and reliable delivery for groceries, vegetables, fruits, medicine, and food",
+    images: ["/og-image.png"],
+  },
+  icons: {
+    apple: "/favicon.ico",
+  },
 }
 
 export const viewport = {
@@ -40,13 +75,6 @@ html {
   --font-mono: ${GeistMono.variable};
 }
         ` }} />
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="ErrandMagics" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="format-detection" content="telephone=no" />
       </head>
       <body>
         <Providers>
