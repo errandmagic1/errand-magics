@@ -60,7 +60,7 @@ def create_og_image(input_path, output_path):
         print(f"Error creating {output_path}: {e}")
 
 if __name__ == "__main__":
-    logo_path = "public/errand-magics-logo.png"
+    logo_path = "public/favicon.ico"
     
     if not os.path.exists(logo_path):
         print(f"File {logo_path} not found!")
