@@ -9,12 +9,13 @@ import { Suspense } from "react"
 import { AuthInitializer } from "@/components/auth/auth-initializer"
 
 export const metadata: Metadata = {
-
   title: "ErrandMagics - Quick Commerce Platform",
   description:
     "Quick Commerce Platform - Fast and reliable delivery for groceries, vegetables, fruits, medicine, and food",
   generator: "v0.app",
-  
+  icons: {
+    icon: "/favicon.ico",
+  },
 }
 
 export const viewport = {
