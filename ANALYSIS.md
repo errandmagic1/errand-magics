@@ -1,6 +1,6 @@
 # Codebase Analysis Summary
 
-## PROJECT: bolpur-mart
+## PROJECT: errand-magics
 ## STACK: Next.js 14.2.16 + TypeScript + Tailwind CSS + Radix UI (shadcn/ui)
 ## ROUTER: App Router
 ## DATABASE: Firebase (Firestore & Realtime Database) - **Unified**

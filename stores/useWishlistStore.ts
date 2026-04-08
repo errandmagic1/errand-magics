@@ -57,7 +57,7 @@ export const useWishlistStore = create<WishlistState>()(
             const newWishlist = new Set(state.wishlistedProducts)
             newWishlist.add(productId)
             
-            localStorage.setItem('bolpur-mart-guest-wishlist', JSON.stringify([...newWishlist]))
+            localStorage.setItem('errand-magics-guest-wishlist', JSON.stringify([...newWishlist]))
             
             return { 
               wishlistedProducts: newWishlist
@@ -90,7 +90,7 @@ export const useWishlistStore = create<WishlistState>()(
             const newWishlist = new Set(state.wishlistedProducts)
             newWishlist.delete(productId)
             
-            localStorage.setItem('bolpur-mart-guest-wishlist', JSON.stringify([...newWishlist]))
+            localStorage.setItem('errand-magics-guest-wishlist', JSON.stringify([...newWishlist]))
             
             return { 
               wishlistedProducts: newWishlist

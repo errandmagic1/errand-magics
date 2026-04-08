@@ -46,7 +46,7 @@ export default function Wishlist() {
 
       if (!userId) {
         // Guest user - load from localStorage
-        const storedWishlist = localStorage.getItem('bolpur-mart-guest-wishlist');
+        const storedWishlist = localStorage.getItem('errand-magics-guest-wishlist');
         const guestWishlistIds = storedWishlist ? JSON.parse(storedWishlist) : [];
 
         if (guestWishlistIds.length > 0) {

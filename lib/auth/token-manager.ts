@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 
 const TOKEN_KEY = 'errand_magics_token'
 const REFRESH_TOKEN_KEY = 'errand_magics_refresh_token'
-const USER_DATA_KEY = 'bolpur_mart_user'
+const USER_DATA_KEY = 'errand_magics_user'
 
 export class TokenManager {
   // Set authentication token with 7-day expiry (regardless of rememberMe)
